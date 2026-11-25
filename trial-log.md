@@ -57,3 +57,20 @@
   retype: v1 wrote the line unconditionally.
 - Trial log revised with the real v1 bundle/check numbers above.
 - Re-run preflight after the edit, then re-commit, re-bundle (v2), re-check.
+
+## v2 — re-bundle + re-check (25 Nov 2026 ~04:03 WITA)
+
+- Preflight v2 OK: same 38-character line, guard passes.
+- Commit `1428b22c4cdd2fdc34a29074982422c5ace2ffb8` (main), pushed;
+  HEAD local = `git ls-remote` HEAD.
+- Bundle v2: `~/workspace/make-fun/twelve-prog/bundle-3-v2.tar.gz`,
+  161,985 bytes, sha256
+  `4f4843a1709385678d5a42e19a924080c8d6e5302a2300b76ab79ccd3e968cec`.
+  0 usage rows attached (expected — coordinator re-bundles).
+- Check v2: **13 passed, 1 failed, 5 skipped**.
+  - FAIL `thinking_priced` only: 0 usage rows — expected, coordinator
+    re-bundles with the usage rows (subagent rows flush at run end).
+  - PASS `thinking_revised`: `main.ts` now takes its final content from
+    2 messages. PASS `thinking_reproduces`: 82 of 86 counted lines (95.3%).
+- Status: build + bundle + check done; ready for coordinator re-bundle
+  (usage rows) and submit. NOT submitted by this builder.
